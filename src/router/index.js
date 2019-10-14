@@ -15,8 +15,8 @@ export default () => (
   <HashRouter>
     <Switch>
       <AuthRoute exact path="/login" authTo="/" component={LoginPage} />
-      <AuthRoute path="/home" authTo="/login" component={Layout} />
-      <Redirect from="/" to="/home" />
+      <AuthRoute path="/jd" authTo="/login" component={Layout} />
+      <Redirect from="/" to="/jd" />
       <Route component={Page404} />
     </Switch>
   </HashRouter>
@@ -32,7 +32,7 @@ export const RouteList = ({ match }) => {
           <Route path={`${match.path + item.path}`} key={index} component={componentObj[item.component]} />
         ))
       }
-      <Route exact path={match.path} component={Home} />
+      <Route exact path={match.path} component={Dashboard} />
       <Route component={Page404} />
     </Switch>
   );

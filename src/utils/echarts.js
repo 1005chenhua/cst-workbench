@@ -1,86 +1,144 @@
+import ReactEcharts from 'echarts-for-react';
+import echarts from 'echarts';
 export function getBarChart() {
   const option = {
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: { // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+    title: {
+      text: '单位：辆/人',
+      top: '15%',
+      left: '10%',
+      textStyle: {
+        color: '#fff',
+        fontSize: '14px',
       }
     },
     grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
+      left: '10.5%',
+      right: '6%',
+      top: '25%',
+      bottom: '15%'
     },
-    xAxis: [{
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b} : {c}'
+    },
+    legend: {
+      right: '5%',
+      top: '15%',
+      itemWidth: 5,
+      itemHeight: 5,
+      itemGap: 30,
+      icon: 'rectangle',
+      textStyle: {
+        color: '#fff'
+      },
+      data: ['外来人员','外来车辆'],
+    },
+    xAxis: {
       type: 'category',
-      data: ['2014', '2015', '2016', '2017', '2018', '2019'],
+      data: ['1','2','3','4','5','6','7','8'],
+      axisLabel: {
+        color: '#FFFFFF',
+        interval: 0,
+        // rotate: 40,
+        textStyle: {
+          fontSize: 12
+        }
+      },
+      splitLine: {// 去除网格线
+        show: true,
+        lineStyle: {
+          color: '#054792',
+        }
+      },
       axisLine: {
         lineStyle: {
-          color: '#8FA3B7',// y轴颜色
+          color: '#054792',
+          width: 1 // 这里是为了突出显示加上的
         }
       },
-      axisLabel: {
-        show: true,
-        textStyle: {
-          color: '#6D6D6D',
-        }
+      axisTick: {
+        show: false
       },
-      axisTick: { show: false }
-    }],
-    yAxis: [{
+    },
+    yAxis: {
       type: 'value',
-      splitLine: { show: false },
-      // max: 700,
-      splitNumber: 3,
-      axisTick: { show: false },
+      axisLabel: {
+        formatter: '{value}',
+        color: '#FFFFFF',
+        textStyle: {
+          fontSize: 12
+        }
+      },
+      splitLine: {// 去除网格线
+        show: true,
+        lineStyle: {
+          color: '#054792',
+        }
+      },
       axisLine: {
         lineStyle: {
-          color: '#8FA3B7',// y轴颜色
+          color: '#054792',
+          width: 1
         }
       },
-      axisLabel: {
-        show: true,
-        textStyle: {
-          color: '#6D6D6D',
-        }
+      axisTick: {
+        show: false
       },
-    }],
+    },
     series: [
+      {
+        name: '外来人员',
+        type: 'bar',
+        barWidth: '10',
+        itemStyle: {
+          normal: {
+            // 颜色渐变
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 0.5, [
+              {
+                offset: 0,
+                color: '#00FFED'
 
-      {
-        name: 'a',
-        type: 'bar',
-        barWidth: '40%',
-        itemStyle: {
-          normal: {
-            color: '#FAD610'
+              },
+              {
+                offset: 1,
+                color: '#0082EA'
+
+              }
+            ]),
+            barBorderRadius: 5
+          },
+          emphasis: {
+            barBorderRadius: 5
           }
         },
-        stack: '信息',
-        data: [320, 132, 101, 134, 90, 30]
+        data: [160,150,140,130,120,100,90,60]
       },
       {
-        name: 'b',
+        name: '外来车辆',
         type: 'bar',
+        barWidth: '10',
         itemStyle: {
           normal: {
-            color: '#27ECCE'
+            // 颜色渐变
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 0.5, [
+              {
+                offset: 0,
+                color: '#F4CB48'
+
+              },
+              {
+                offset: 1,
+                color: '#91C50F'
+
+              }
+            ]),
+            barBorderRadius: 5
+          },
+          emphasis: {
+            barBorderRadius: 5
           }
         },
-        stack: '信息',
-        data: [220, 182, 191, 234, 290, 230]
-      },
-      {
-        name: 'c',
-        type: 'bar',
-        itemStyle: {
-          normal: {
-            color: '#4DB3F5'
-          }
-        },
-        stack: '信息',
-        data: [150, 132, 201, 154, 90, 130]
+        data: [100,120,130,140,150,160,210,25]
       }
     ]
   };
@@ -90,60 +148,154 @@ export function getBarChart() {
 export function getLineChart() {
   // option
   const option = {
-    color: ['#D53A35'],
-    tooltip: {
-      trigger: 'axis',
-      // formatter: "{b} <br> 合格率: {c}%"
+    title: {
+      text: '单位：人',
+      top: '15%',
+      left: '10%',
+      textStyle: {
+        color: '#fff',
+        fontSize: '14px',
+      }
     },
     grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
+      left: '5%',
+      right: '6%',
+      bottom: '10%',
+      top: '25%',
       containLabel: true
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { // 坐标轴指示器，坐标轴触发有效
+        type: 'none' // 默认为直线，可选为：'line' | 'shadow'
+      },
+      formatter: function(params) {
+        let res = '';
+        for (let i = 0; i < params.length; i++) {
+          res += '<p style="margin:0;padding:5px 10px;">' + params[i].name + ' : ' + params[i].value + '人' +
+                  '</p>';
+        }
+        return res;
+      }
+    },
+    color: ['#00BBF4','#91C50F'],
+    legend: {
+      right: '5%',
+      top: '15%',
+      itemWidth: 5,
+      itemHeight: 5,
+      itemGap: 30,
+      icon: 'rect',
+      textStyle: {
+        color: '#fff'
+      },
+      data: ['在监警力','警力配置'],
     },
     xAxis: {
       type: 'category',
-      name: '',
+      // data: ['一监区', '二监区', '三监区', '四监区', '五监区', '六监区','七监区', '八监区', '九监区', '十监区', '十一监区', '十二监区'],
+      data: ['2','4','6','8','10','12','14','16','18','20','22','24'],
       boundaryGap: false,
+      axisLabel: {
+        show: true,
+        interval: 0,
+        // rotate: 40,
+        textStyle: {
+          color: '#fff',
+          fontSize: 12
+        },
+      },
       axisLine: {
-        show: false,
         lineStyle: {
-          color: '#525252'
+          color: '#054792',
+          width: 1
+        }
+      },
+      splitLine: {// 去除网格线
+        show: true,
+        lineStyle: {
+          color: '#054792',
         }
       },
       axisTick: {
         show: false
       },
-      axisLabel: {
-        color: '#525252'
-      },
-      data: ['01', '02', '03', '04', '05', '06', '07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24']
     },
     yAxis: {
       type: 'value',
-      name: '',
+      axisLabel: {
+        show: true,
+        textStyle: {
+          color: '#FFFFFF',
+          fontSize: 12
+        },
+        formatter: '{value}'
+      },
       axisLine: {
-        show: false,
+        lineStyle: {
+          color: '#054792',
+        }
+      },
+      splitLine: {// 去除网格线
+        show: true,
+        lineStyle: {
+          color: '#054792',
+        }
       },
       axisTick: {
         show: false
       },
-      axisLabel: {
-        color: '#525252'
-      },
-      splitLine: {
-        lineStyle: {
-          type: 'dotted',
-          color: '#AAA'// F3F3F3
-        }
-      }
     },
-    series: [{
-      name: 'a',
-      type: 'line',
-      symbol: 'circle',
-      data: [100,120, 132, 101, 134, 90, 230, 210,80,20,90,210,200,100,120, 132, 101, 134, 90, 230, 210,80,20,90]
-    }
+    series: [
+      {
+        name: '在监警力',
+        data: [12,23,34,45,56,67,78,89,90,123,234,0],
+        type: 'line',
+        smooth: true,
+        itemStyle: {
+          normal: {
+            borderColor: '#00FFFF',
+            lineStyle: {
+              width: 2,
+              type: 'solid',
+              color: '#00BBF4', // 线条渐变色
+            },
+          },
+        },
+        areaStyle: {
+          normal: {
+            color: new echarts.graphic.LinearGradient(
+              0, 0, 0, 1,
+              [{
+                offset: 0,
+                color: 'rgba(0,195,255,1)',
+              },
+              {
+                offset: 1,
+                color: 'rgba(0,195,255,0)'
+              }]
+            )
+          }
+        },
+        symbol: 'none', // 取消折点圆圈
+      },
+      {
+        name: '警力配置',
+        data: [0,234,123,90,89,78,67,56,45,34,23,12],
+        type: 'line',
+        smooth: true,
+        itemStyle: {
+          normal: {
+            borderColor: '#00FFFF',
+            lineStyle: {
+              width: 2,
+              type: 'solid',
+              color: '#91C50F', // 线条渐变色
+            },
+          },
+        },
+        symbol: 'none', // 取消折点圆圈
+      }
     ]
   };
   return option;
@@ -152,54 +304,83 @@ export function getLineChart() {
 export function getPieChart() {
   // option
   const option = {
-    color: ['#3AA1FF', '#36CBCB', '#4ECB73', '#FBD338'],
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)'
+      formatter: '{a} <br/>{b} : {c} ({d}%)'
     },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    series: [{
-      name: '消费能力',
-      type: 'pie',
-      radius: ['40%', '55%'],
-      center: ['50%', '55%'],
-      avoidLabelOverlap: true,
-      itemStyle: {
-        normal: {
-          borderColor: '#FFFFFF',
-          borderWidth: 2
-        }
+    legend: {
+      x: 'center',
+      y: 'bottom',
+      icon: 'circle',
+      orient: 'vertical',
+      left: '60%',
+      top: '20%',
+      align: 'left',
+      itemWidth: 7, // 设置宽度
+      itemHeight: 7, // yuandian
+      itemGap: 10, // 设置间距
+      padding: [14, 14],
+      textStyle: {
+        color: '#06C5FD',
+        fontSize: 12
       },
+      data: ['在册人数','监内人数','释放人数','监外人数','死亡人数','销册人数','假释人数','调动人数']
+    },
+    color: [ '#FACD89','#F29B76','#AA89BD','#556FB5','#0068B7','#22AC38','#004986','#06EBFF'],
+    calculable: true,
+    series: [{
+      name: '半径模式',
+      type: 'pie',
+      center: ['34%', '50%'],
+      radius: ['20%','50%'],
+      roseType: 'radius',
       label: {
         normal: {
-          show: false,
+          show: false
         },
       },
-      labelLine: {
+      lableLine: {
         normal: {
           show: false
+        },
+        emphasis: {
+          show: true
         }
       },
-      data: [{
-        name: 'a',
-        value: '20'
-      }, {
-        name: 'b',
-        value: '40'
-      }, {
-        name: 'c',
-        value: '10'
-      }, {
-        name: 'd',
-        value: '10'
-      }]
+      data:	[{
+        value: 16,
+        name: '在册人数'
+      },{
+        value: 18,
+        name: '监内人数'
+      },{
+        value: 22,
+        name: '释放人数'
+      },{
+        value: 16,
+        name: '监外人数'
+      },{
+        value: 32,
+        name: '死亡人数'
+      },{
+        value: 24,
+        name: '销册人数'
+      },{
+        value: 24,
+        name: '调动人数'
+      },{
+        value: 34,
+        name: '假释人数'
+      }
+      ]
     }]
   };
   return option;
 }
 
+export function getSctChart() {
+  // option
+  const option = {
+  };
+  return option;
+}

@@ -53,21 +53,21 @@ export default ({ setTempData }) => {
             </span>
           </div>
           <ul className="temp-list" style={{ maxHeight: visible5 ? 0 : '1000px' }}>
-            <li draggable onDragStart={() => setTempData({ type: 'bar', title: '罪犯文化程度', minW: 2, minH: 4, w: 4, h: 8 }) } unselectable="on" >
+            <li draggable onDragStart={() => setTempData({ type: 'bar', title: 'AB门管理', minW: 2, minH: 4, w: 4, h: 8 }) } unselectable="on" >
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
-              <div className="title">罪犯文化程度...</div>
+              <div className="title">AB门管理...</div>
             </li>
-            <li draggable onDragStart={() => setTempData({ type: 'line', title: '罪犯婚姻状况', minW: 2, minH: 4, w: 4, h: 8 }) } unselectable="on" >
+            <li draggable onDragStart={() => setTempData({ type: 'line', title: '在监警力统计分析', minW: 2, minH: 4, w: 4, h: 8 }) } unselectable="on" >
               <img draggable={false} src={require('../../assets/images/tempIcons/1.png')} alt="" />
-              <div className="title">罪犯婚姻状况...</div>
+              <div className="title">在监警力统计分析...</div>
             </li>
             <li draggable onDragStart={() => setTempData({ type: 'pie', title: '三类罪犯统计', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
               <div className="title">三类罪犯统计</div>
             </li>
-            <li>
-              {/* <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
-              <div className="title">四涉罪犯统计</div> */}
+            <li draggable onDragStart={() => setTempData({ type: 'sct', title: '报警信息', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
+              <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
+              <div className="title">报警信息</div>
             </li>
             {/* <li>
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
