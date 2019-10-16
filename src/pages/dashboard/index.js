@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import Grid from './Grid';
 import Panel from './Panel';
 import TagViews from './TagViews';
-import { Modal } from 'antd';
+import { Modal, Form, Select, Input, Button } from 'antd';
+const { Option } = Select;
 
+
+function handleChange(value) {
+  console.log(`selected ${value}`);
+}
 export default () => {
   const [tempData, setTempData] = useState({});
-  const [visible] = useState(false);
-  const [visible0, showModal] = useState(true);
-  const [visible1, handleOk] = useState(false);
-  const [visible2, handleCancel] = useState(false);
+  const [visible, showModal] = useState(false);
   return (
     <div className="dashboard-container" >
       <div className="dashboard-container-header">
@@ -20,7 +22,7 @@ export default () => {
         <div className="dashboard-container-header-btn">
           <img src={require('../../assets/images/bg-dashboard-header.png')} alt="" />
           <ul>
-            <li className="btn-item" onClick={showModal}>新建</li>
+            <li className="btn-item" onClick={() => { showModal(true); }}>新建</li>
             <li className="btn-item">保存</li>
             <li className="btn-item">另存为</li>
             <li className="btn-item">删除</li>
@@ -43,14 +45,31 @@ export default () => {
         </div>
       </div>
       <Modal
-        title="Basic Modal"
+        centered
+        // title="Basic Modal"
+        closable = {false}
         visible={visible}
-        onOk={handleOk}
-        onCancel={handleCancel}
+        footer = {null}
+        onOk={() => { showModal(false); }}
+        onCancel={() => { showModal(false); }}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <Form>
+          <Form.Item label="添加组：">
+            <Select placeholder="请选择组名" style={{ width: 120 }} onChange={handleChange}>
+              <Option value="1">个人模板</Option>
+            </Select>
+          </Form.Item>
+          <Form.Item label="添加组：">
+            <Input
+              style={{ width: 200 }}
+              placeholder="请填写配置名"
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button className="global-btn global-btn-cancel " onClick={() => { showModal(false); }}>取消</Button>
+            <Button className="global-btn">确定</Button>
+          </Form.Item>
+        </Form>
       </Modal>
     </div>
   );

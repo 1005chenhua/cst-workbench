@@ -20,3 +20,9 @@ export const getTableList = queryList => request({
   url: `/user/getTableList?current=${queryList.current}&pageSize=${queryList.pageSize}`,
   method: 'get'
 });
+
+// 用户
+export const getPubTemp = queryList => request({
+  // url: '',
+  // method: 'get'
+});

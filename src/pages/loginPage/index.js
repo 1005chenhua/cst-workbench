@@ -40,7 +40,9 @@ const LoginPage = ({ handleLogin }) => {
           <Checkbox>Remember me</Checkbox>
 
           <Button type="primary" onClick={() => {
-            handleLogin(userNameObj.value,passWorldObj.value);
+            if (userNameObj.value && passWorldObj.value) {
+              handleLogin(userNameObj.value, passWorldObj.value);
+            }
           }}
           className="login-form-button">
 					登陆

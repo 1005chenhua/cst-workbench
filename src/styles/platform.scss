@@ -62,3 +62,57 @@
 .cst-layout {
     min-height: 100%;
 }
+.ant-modal{
+    &-content{
+        background: url('../assets/images/temp/bg-tanchuang.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    &-body{
+        height: 288px;
+        .ant-col{
+            margin: auto;
+        }
+    }
+    &-footer{
+        border-top: none;
+    }
+    .ant-form{
+        padding-top: 3%;
+        &-item{
+            display: flex;
+            padding: 3% 20%;
+            margin-bottom: 0;
+            label{
+                height: 40px;
+                text-align: center;
+                color: #0393FF;
+                font-size: 14px;
+            }
+            .ant-select{
+                width: 200px !important;
+                &-selection{
+                    background: transparent;
+                    border:1px solid #0393FF;
+                    .anticon{
+                        color: #0393FF;
+                    }
+                }
+            }
+            .ant-input{
+                background: transparent;
+                border:1px solid #0393FF;
+            }
+        }
+        .global-btn{
+            width:80px;
+            height: 40px;
+            background: url('../assets/images/temp/global-btn.png') no-repeat;
+            background-size: 100% 100%;
+            border: none;
+            color: #fff;
+            &-cancel{
+                margin-right: 15px;
+            }
+        }
+    }
+}
