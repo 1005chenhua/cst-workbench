@@ -3,7 +3,11 @@ import axios from 'axios';
 // 创建axios实例
 const service = axios.create({
   // baseURL: process.env.BASE_API+'/api', // api的base_url
-  timeout: 150000 // 请求超时时间
+  baseURL: 'http://192.168.0.118:9093/userbpm',
+  timeout: 150000, // 请求超时时间
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest'
+  }
 });
 
 // request拦截器

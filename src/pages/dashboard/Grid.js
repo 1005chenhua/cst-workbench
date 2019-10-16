@@ -3,6 +3,7 @@ import _ from 'lodash';
 import { Responsive, WidthProvider } from '@/components/Draggler';
 import ReactEcharts from 'echarts-for-react';
 import { getBarChart, getLineChart, getPieChart, getSctChart } from '@/utils/echarts';
+import { getStaChart } from '../../utils/echarts';
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -57,6 +58,8 @@ export default class ShowcaseLayout extends React.Component {
         option = getPieChart();
       } else if (l.type === 'sct') {
         option = getSctChart();
+      } else if (l.type === 'sta') {
+        option = getStaChart();
       }
 
       const component = (

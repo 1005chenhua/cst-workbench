@@ -61,22 +61,26 @@ export default ({ setTempData }) => {
               <img draggable={false} src={require('../../assets/images/tempIcons/1.png')} alt="" />
               <div className="title">在监警力统计分析...</div>
             </li>
-            <li draggable onDragStart={() => setTempData({ type: 'pie', title: '三类罪犯统计', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
+            <li draggable onDragStart={() => setTempData({ type: 'pie', title: '罪犯在押状态统计', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
-              <div className="title">三类罪犯统计</div>
+              <div className="title">罪犯在押状态统计</div>
             </li>
             <li draggable onDragStart={() => setTempData({ type: 'sct', title: '报警信息', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
               <div className="title">报警信息</div>
             </li>
-            {/* <li>
+            <li draggable onDragStart={() => setTempData({ type: 'sta', title: '三类罪犯统计', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
-              <div className="title">罪犯危险性分...</div>
+              <div className="title">三类罪犯统计</div>
             </li>
-            <li>
+            <li draggable onDragStart={() => setTempData({ type: 'sta', title: '设备情况（完好率）', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
               <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
-              <div className="title">监狱安全指数</div>
-            </li> */}
+              <div className="title">设备情况</div>
+            </li>
+            <li draggable onDragStart={() => setTempData({ type: 'sta', title: '安全指数分析', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
+              <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
+              <div className="title">安全指数分析</div>
+            </li>
           </ul>
         </div>
       </div>
