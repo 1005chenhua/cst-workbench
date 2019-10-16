@@ -272,6 +272,7 @@ $customizeWhite: #fff;
       padding: 0 30px 15px 0;
       background: url(../assets/images/bd-dashboard-content.png);
       background-size: 100% 100%;
+      display: flex;
       .tag-views {
         height: 28px;
         ul {
@@ -300,8 +301,154 @@ $customizeWhite: #fff;
         overflow: auto;
         overflow-x: hidden;
       }
+      &-core {
+        width: calc(100% - 240px);
+        height: 100%;
+        .tag-views {
+          height: 28px;
+          ul {
+            display: flex;
+            height: 100%;
+            padding-left: 10px;
+          }
+          &-item {
+            & + .tag-views-item {
+              margin-left: 10px;
+            }
+            color: #fff;
+            font-size: 12px;
+            background: url(../assets/images/temp/bd-btn.png);
+            background-size: 100% 100%;
+            height: 100%;
+            width: 160px;
+            text-align: center;
+            line-height: 28px;
+          }
+        }
+        .grid-box {
+          background: url(../assets/images/bd-gridbox.png);
+          background-size: 100% 100%; 
+          height: calc(100% - 28px);
+          overflow: auto;
+          overflow-x: hidden;
+        }
+      }
+      &-form {
+        width: 240px;
+        background: url(../assets/images/bg-dashboard-form.png);
+        background-size: 100% 100%;
+        padding: 30px 15px;
+        .panel-box {
+          &-item {
+            // min-height: 500px;
+            .btn {
+              height: 43px;
+              background: url(../assets/images/bg-panel-btn.png);
+              background-size: 100% 100%;
+              font-size: 16px;
+              color: #fff;
+              font-weight: bolder;
+              display: flex;
+              align-items: center;
+              padding-left: 15px;
+              cursor: pointer;
+            }
+            .content {
+              padding-top: 10px;
+              transition: max-height 0.3s;
+              overflow: hidden;
+              .ant-input {
+                background-color: #05254B;
+                border: none;
+                color: #00CCFF;
+                &::-webkit-input-placeholder{
+                  color:#0393FF;
+                  font-size: 14px;
+                  font-weight: bolder;
+                  opacity:0.5;
+                }
+              }
+              &-select {
+                position: relative;
+                margin-bottom: 14px;
+                .content-select-title {
+                  width: 67px;
+                  height: 100%;
+                  border-radius: 2px;
+                  color: #fff;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  display: inline-block;
+                  background: rgba(6, 60, 121, 1);
+                  z-index: 99;
+                  text-align: center;
+                  line-height: 32px;
+                }
+                .explain {
+                  position: relative;
+                  height: 30px;
+                  margin-bottom: 6px;
+                }
+                .ant-select {
+                  width: 100%;
+                  .ant-select-selection--single {
+                    background-color: #05254B;
+                    border: none;
+                    border-radius:2px;
+                    padding-left: 67px;
+                    color: #0393FF;
+                    height: 30px;
+                    .ant-select-arrow {
+                      color: rgba(9, 99, 223, 1);
+                    }
+                  }
+                }
+              }
+              &-radio {
+                width: 100%;
+                height: 30px;
+                background: #05254B;
+                margin-bottom: 14px;
+                &-title {
+                  width: 67px;
+                  padding-left: 10px;
+                  line-height: 30px;
+                  font-size: 15px;
+                  color: #fff;
+                  display: inline-block;
+                }
+                .ant-radio-group {
+                  .ant-radio-wrapper {
+                    span {
+                      color: #0393FF;
+                    }
+                    .ant-radio-inner {
+                      background: transparent;
+                      border: 1px solid #0393FF;
+                    }
+                  }
+                }
+              }
+              .ant-input-search-icon {
+                color: #0963DF;
+                font-size: 18px;
+              }
+            }
+          }
+        }
+      }
     }
 
   }
   
+}
+// react动画
+.show{
+  opacity: 1;
+  transition: all 1s ease-in ;
+}
+.hide{
+  opacity: 0;
+  transition: all 1s ease-in ;
 }
