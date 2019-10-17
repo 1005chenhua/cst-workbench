@@ -1,9 +1,16 @@
 import axios from 'axios';
+import { getToken } from '@/utils/auth';
 
 // 创建axios实例
 const service = axios.create({
   // baseURL: process.env.BASE_API+'/api', // api的base_url
-  timeout: 150000 // 请求超时时间
+  // baseURL: 'http://192.168.0.118:9093/userbpm',
+  baseURL: 'http://192.168.0.105:9092/bpm',
+  timeout: 150000, // 请求超时时间
+  headers: {
+    'X-Requested-With': 'XMLHttpRequest',
+    'token': getToken('USERTOKEN')
+  }
 });
 
 // request拦截器

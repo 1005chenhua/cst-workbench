@@ -12,30 +12,29 @@ export default ({ setTempData }) => {
   const [visible3, setVisible3] = useState(false);
   const [visible4, setVisible4] = useState(false);
   const [visible5, setVisible5] = useState(false);
-
   return (
     <div className="panel-box" >
       <div className="panel-box-item">
         <div className="btn" onClick={() => setVisible1(!visible1)}>
-          <span>工作台模板</span>
+          <span>应用套件</span>
           <Icon style={{ marginLeft: '10px' }} type="double-left" />
         </div>
         <div className="content" style={{ paddingTop: visible1 ? 0 : '10px', maxHeight: visible1 ? 0 : '1000px' }}>
           <Search placeholder="请输入模板名称" onSearch={value => console.log(value)} />
 
           <div className="group-btn" onClick={() => setVisible2(!visible2)}>
-          公共模板
+          罪犯统计分析
             <span className="group-btn-iconbox">
               <Icon type="caret-down" />
             </span>
           </div>
           <ul className="group-list" style={{ paddingBottom: visible2 ? 0 : '10px', maxHeight: visible2 ? 0 : '1000px' }}>
-            <li>罪犯婚姻状态统计(编辑中0)</li>
-            <li>罪犯婚姻状态统计(已保存1)</li>
-            <li>罪犯婚姻状态统计(已发布2)</li>
+            <li>罪犯婚姻状态统计</li>
+            <li>罪犯婚姻状态统计</li>
+            <li>罪犯婚姻状态统计</li>
           </ul>
 
-          <div className="group-btn" onClick={() => setVisible3(!visible3)}>个人模板<span className="group-btn-iconbox"><Icon type="caret-down" /></span></div>
+          <div className="group-btn" onClick={() => setVisible3(!visible3)}>新建组一<span className="group-btn-iconbox"><Icon type="caret-down" /></span></div>
           <ul className="group-list" style={{ paddingBottom: visible3 ? 0 : '10px', maxHeight: visible3 ? 0 : '1000px' }}>
             <li>分析研判岗-通用模板一</li>
           </ul>
@@ -52,18 +51,26 @@ export default ({ setTempData }) => {
               <Icon type="caret-down" />
             </span>
           </div>
-          <ul className="temp-list" style={{ maxHeight: visible5 ? 0 : '1000px' }}>
+          <ul className="temp-list" style={{ maxHeight: visible5 ? 0 : '200px' }}>
             <li draggable onDragStart={() => setTempData({ type: 'bar', title: '罪犯文化程度', minW: 2, minH: 4, w: 4, h: 8 }) } unselectable="on" >
-              <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
+              <img src={require('../../assets/images/tempIcons/7.png')} alt="" />
               <div className="title">罪犯文化程度...</div>
             </li>
             <li draggable onDragStart={() => setTempData({ type: 'line', title: '罪犯婚姻状况', minW: 2, minH: 4, w: 4, h: 8 }) } unselectable="on" >
-              <img draggable={false} src={require('../../assets/images/tempIcons/1.png')} alt="" />
+              <img draggable={false} src={require('../../assets/images/tempIcons/5.png')} alt="" />
               <div className="title">罪犯婚姻状况...</div>
             </li>
             <li draggable onDragStart={() => setTempData({ type: 'pie', title: '三类罪犯统计', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
-              <img src={require('../../assets/images/tempIcons/1.png')} alt="" />
+              <img src={require('../../assets/images/tempIcons/13.png')} alt="" />
               <div className="title">三类罪犯统计</div>
+            </li>
+            <li draggable onDragStart={() => setTempData({ type: 'sct', title: '报警信息', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
+              <img src={require('../../assets/images/tempIcons/17.png')} alt="" />
+              <div className="title">报警信息</div>
+            </li>
+            <li draggable onDragStart={() => setTempData({ type: 'sta', title: '设备情况', minW: 2, minH: 2, w: 3, h: 8 }) } unselectable="on" >
+              <img src={require('../../assets/images/tempIcons/4.png')} alt="" />
+              <div className="title">设备情况</div>
             </li>
             <li>
               {/* <img src={require('../../assets/images/tempIcons/1.png')} alt="" />

@@ -6414,7 +6414,11 @@ lodash.isarray@^3.0.0:
 
 lodash.isequal@^4.0.0:
   version "4.5.0"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+=======
+  resolved "https://registry.npm.taobao.org/lodash.isequal/download/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+>>>>>>> 255e2901fe0efefd2392026053bee2304dfab05d
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
 lodash.keys@^3.1.2:
@@ -9156,8 +9160,13 @@ react-dom@^16.8.6:
 
 react-draggable@3.x, react-draggable@^3.0.3:
   version "3.3.2"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/react-draggable/-/react-draggable-3.3.2.tgz#966ef1d90f2387af3c2d8bd3516f601ea42ca359"
   integrity sha512-oaz8a6enjbPtx5qb0oDWxtDNuybOylvto1QLydsXgKmwT7e3GXC2eMVDwEMIUYJIFqVG72XpOv673UuuAq6LhA==
+=======
+  resolved "https://registry.npm.taobao.org/react-draggable/download/react-draggable-3.3.2.tgz#966ef1d90f2387af3c2d8bd3516f601ea42ca359"
+  integrity sha1-lm7x2Q8jh688LYvTUW9gHqQso1k=
+>>>>>>> 255e2901fe0efefd2392026053bee2304dfab05d
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.6.0"
@@ -9169,8 +9178,13 @@ react-error-overlay@^6.0.2:
 
 react-grid-layout@^0.16.6:
   version "0.16.6"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/react-grid-layout/-/react-grid-layout-0.16.6.tgz#9b2407a2b946c2260ebaf66f13b556e1da4efeb2"
   integrity sha512-h2EsYgsqcESLJeevQSJsEKp8hhh+phOlXDJoMhlV2e7T3VWQL+S6iCF3iD/LK19r4oyRyOMDEir0KV+eLXrAyw==
+=======
+  resolved "https://registry.npm.taobao.org/react-grid-layout/download/react-grid-layout-0.16.6.tgz#9b2407a2b946c2260ebaf66f13b556e1da4efeb2"
+  integrity sha1-myQHorlGwiYOuvZvE7VW4dpO/rI=
+>>>>>>> 255e2901fe0efefd2392026053bee2304dfab05d
   dependencies:
     classnames "2.x"
     lodash.isequal "^4.0.0"
@@ -9219,8 +9233,13 @@ react-redux@^7.1.0:
 
 react-resizable@1.x:
   version "1.8.0"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/react-resizable/-/react-resizable-1.8.0.tgz#a6dd8c90826f1e54244141b770318e0320663a43"
   integrity sha512-lfYlCelPyUL8GLYd4SgFtZOrFY8XpxpDwXjgGHLiLM2aMv7mEkBT8Jn5MUV1TCinF5mIro4CMezfnniAZEkGvg==
+=======
+  resolved "https://registry.npm.taobao.org/react-resizable/download/react-resizable-1.8.0.tgz#a6dd8c90826f1e54244141b770318e0320663a43"
+  integrity sha1-pt2MkIJvHlQkQUG3cDGOAyBmOkM=
+>>>>>>> 255e2901fe0efefd2392026053bee2304dfab05d
   dependencies:
     prop-types "15.x"
     react-draggable "^3.0.3"
