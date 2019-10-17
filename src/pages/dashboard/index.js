@@ -13,8 +13,6 @@ export default () => {
     console.log(`selected ${value}`);
   };
   const addInfo = () => {
-    // addTemp({ cucName: '', cucStatus: '1', }).then(res => { 
-    // });
   };
   return (
     <div className="dashboard-container" >

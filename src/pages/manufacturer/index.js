@@ -4,14 +4,14 @@ import Panel from './Panel';
 import TagViews from './TagViews';
 import Form from './form';
 import request from '../../utils/request';
-import { getQueryConfig } from '@/api';
+// import { getQueryConfig } from '@/api';
 // eslint-disable-next-line complexity
 export default () => {
   const [tempData, setTempData] = useState({});
   const handleAdd = () => {
-    getQueryConfig().then(res => {
-      console.log(res);
-    });
+    // getQueryConfig().then(res => {
+    //   console.log(res);
+    // });
   };
   return (
     <div className="dashboard-container" >
