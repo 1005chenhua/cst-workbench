@@ -4,13 +4,13 @@ import Panel from './Panel';
 import TagViews from './TagViews';
 import Form from './form';
 import request from '../../utils/request';
-
+import { getQueryConfig } from '@/api';
 // eslint-disable-next-line complexity
 export default () => {
   const [tempData, setTempData] = useState({});
   const handleAdd = () => {
-    request.get('https://jsonplaceholder.typicode.com/todos/1').then(res => {
-      console.log('res: ', res);
+    getQueryConfig().then(res => {
+      console.log(res);
     });
   };
   return (
@@ -40,7 +40,7 @@ export default () => {
           {/* <div className="droppable-element" draggable unselectable="on" /> */}
           <Panel setTempData={setTempData} />
         </div>
-        <div className="dashboard-container-body-content">
+        <div className="dashboard-container-body-content  displayFlex">
           <div className="dashboard-container-body-content-core">
             <TagViews />
             <Grid tempData={tempData} />
