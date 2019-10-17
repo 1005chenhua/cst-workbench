@@ -22,7 +22,7 @@ export const getTableList = queryList => request({
 });
 
 // 用户
-export const getPubTemp = queryList => request({
-  // url: '',
-  // method: 'get'
+export const addTemp = queryList => request({
+  url: '/v1/userConfigInfo/CusUserConfig/add',
+  method: 'post'
 });

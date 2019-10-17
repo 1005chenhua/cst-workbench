@@ -3,15 +3,19 @@ import Grid from './Grid';
 import Panel from './Panel';
 import TagViews from './TagViews';
 import { Modal, Form, Select, Input, Button } from 'antd';
+import { addTemp } from '@/api/index';
 const { Option } = Select;
 
-
-function handleChange(value) {
-  console.log(`selected ${value}`);
-}
 export default () => {
   const [tempData, setTempData] = useState({});
   const [visible, showModal] = useState(false);
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+  const addInfo = () => {
+    // addTemp({ cucName: '', cucStatus: '1', }).then(res => { 
+    // });
+  };
   return (
     <div className="dashboard-container" >
       <div className="dashboard-container-header">
