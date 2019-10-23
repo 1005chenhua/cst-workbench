@@ -22,7 +22,42 @@ export const getTableList = queryList => request({
 });
 
 // 用户
+<<<<<<< HEAD
 export const addTemp = queryList => request({
   url: '/v1/userConfigInfo/CusUserConfig/add',
   method: 'post'
+=======
+export const addTemp = params => request({
+  url: '/v1/userConfigInfo/CusUserConfig/add',
+  params: params,
+  method: 'post'
+});
+// 个人模板
+export const getPersonalTemp = () => request({
+  url: '/v1/userConfigInfo/CusUserConfig/queryUserById',
+  method: 'get'
+});
+// 公共模板
+export const getPubTemp = () => request({
+  url: '/v1/userConfigInfo/CusUserConfig/list',
+  method: 'get'
+});
+// 模板详情
+export const getTempDetail = params => request({
+  url: '/v1/userConfigInfo/userFunctionInfo/list',
+  params: params,
+  method: 'get'
+});
+// echarts
+export const getEcharts = params => request({
+  url: '/v1/functionInfo/functionInfo/list',
+  params: params,
+  method: 'get'
+});
+// 删除
+export const deleteTemp = parsms => request({
+  url: '/v1/userConfigInfo/CusUserConfig/remove',
+  method: 'DELETE',
+  params: parsms
+>>>>>>> dev
 });

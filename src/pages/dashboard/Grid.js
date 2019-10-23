@@ -1,147 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RGL, { WidthProvider } from '@/components/Draggler';
 import _ from 'lodash';
-import { Responsive, WidthProvider } from '@/components/Draggler';
+// import DragDom from '@/components/DragDom';
+import { getBarChart, getLineChart, getPieChart, getVisualMap, getGauge, getSctChart, getStaChart } from '@/utils/echarts';
 import ReactEcharts from 'echarts-for-react';
-import { getBarChart, getLineChart, getPieChart, getSctChart } from '@/utils/echarts';
-import { getStaChart } from '../../utils/echarts';
 
-const ResponsiveReactGridLayout = WidthProvider(Responsive);
+const ReactGridLayout = WidthProvider(RGL);
 
-export default class ShowcaseLayout extends React.Component {
-  static defaultProps = {
-    className: 'cst-layout',
-    rowHeight: 30,
-    onLayoutChange: function() { },
-    cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
-    widgets: []
-  };
+const generateDOM = (formInfo, selectId, setSelectId) => {
+  // eslint-disable-next-line complexity
+  return _.map(formInfo, (l, i) => {
+    let option;console.log(l);
+    if (l.cfiType === '1') {
+      option = getBarChart();
+    } else if (l.cfiType === '2') {
+      option = getLineChart();
+    } else if (l.cfiType === '3') {
+      option = getPieChart();
+    } else if (l.cfiType === '4') {
+      option = getSctChart();
+    } else if (l.cfiType === '5') {
+      option = getStaChart();
+    }
+    console.log('option: ', option);
+    const component = (
+      <ReactEcharts
+        option={option}
+        notMerge
+        lazyUpdate
+        style={{ width: '100%',height: '100%',paddingTop: '30px' }}
+      />
+    );
+    const nl = JSON.parse(l.cfiLayout);
 
-  state = {
-    currentBreakpoint: 'lg',
-    compactType: 'vertical',
-    mounted: false,
-    widgets: this.props.widgets
-  };
-
-  componentDidMount() {
-    this.setState({ mounted: true });
-  }
-
-  // generateDOM() {
-  //   return _.map(this.state.widgets, function(l, i) {
-  //     return (
-  //       <div key={i} className={l.static ? 'static' : ''} data-grid={l}>
-  //         {l.static ? (
-  //           <span
-  //             className="text"
-  //             title="This item is static and cannot be removed or resized."
-  //           >
-  //             Static - {i}
-  //           </span>
-  //         ) : (
-  //           <span className="text">{i}</span>
-  //         )}
-  //       </div>
-  //     );
-  //   });
-  // }
-  generateDOM = () => {
-    // eslint-disable-next-line complexity
-    return _.map(this.state.widgets, (l, i) => {
-      console.log(l);
-      let option;
-      if (l.type === 'bar') {
-        option = getBarChart();
-      } else if (l.type === 'line') {
-        option = getLineChart();
-      } else if (l.type === 'pie') {
-        option = getPieChart();
-      } else if (l.type === 'sct') {
-        option = getSctChart();
-      } else if (l.type === 'sta') {
-        option = getStaChart();
-      }
-
-      const component = (
-        <ReactEcharts
-          option={option}
-          notMerge
-          lazyUpdate
-          style={{ width: '100%',height: '100%' }}
-        />
-      );
-
-      return (
-        <div key={i} className={l.static ? 'static' : ''} data-grid={l}>
-          {/* <span className="remove" onClick={this.onRemoveItem.bind(this, i)}>x</span> */}
-          <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
-          <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
-          <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
-          <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
-          <img className="bg-icon" src={require('@/assets/images/temp/2.png')} alt="" />
-          <img className="bg-icon" src={require('@/assets/images/temp/2.png')} alt="" />
-          <div className="title-box">{l.title }</div>
-          {component}
-        </div>
-      );
-    });
-  };
-
-
-  onBreakpointChange = breakpoint => {
-    this.setState({
-      currentBreakpoint: breakpoint
-    });
-  };
-
-  onLayoutChange = (layout, layouts) => {
-    this.props.onLayoutChange(layout, layouts);
-  };
-
-  onDrop = elemParams => {
-    const { tempData } = this.props;
-    // const { minW, minH, w, h } = tempData;
-    // console.log(elemParams, tempData);
-    // console.log(_.assign(elemParams, tempData));
-    // tempData.i = new Date().getTime().toString();
-    // elemParams.minW = 2;
-    // elemParams.minH = 4;
-    // elemParams.w = 4;
-    // elemParams.h = 8;
-    // eslint-disable-next-line no-alert
-    ;
-    this.addItem(_.assign(elemParams, tempData));
-  };
-
-  addItem(elemParams) {
-    this.setState({
-      widgets: this.state.widgets.concat({
-        ...elemParams
-      })
-    });
-  };
-
-  render() {
     return (
-      <div className="grid-box" >
-        <ResponsiveReactGridLayout
-          {...this.props}
-          layouts={this.state.layouts}
-          onBreakpointChange={this.onBreakpointChange}
-          onLayoutChange={this.onLayoutChange}
-          onDrop={this.onDrop}
-          // WidthProvider option
-          measureBeforeMount={false}
-          // I like to have it animate on mount. If you don't, delete `useCSSTransforms` (it's default `true`)
-          // and set `measureBeforeMount={true}`.
-          useCSSTransforms={this.state.mounted}
-          compactType={this.state.compactType}
-          preventCollision={!this.state.compactType}
-          isDroppable
-        >
-          {this.generateDOM()}
-        </ResponsiveReactGridLayout>
+      <div key={i} style={{ overflow: 'hidden' }} data-grid={nl}>
+        <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
+        <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
+        <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
+        <img className="bg-icon" src={require('@/assets/images/temp/1.png')} alt="" />
+        <img className="bg-icon" src={require('@/assets/images/temp/2.png')} alt="" />
+        <img className="bg-icon" src={require('@/assets/images/temp/2.png')} alt="" />
+        {/* <img className="bg-eGauge" src={require('@/assets/images/temp/bg-img.png')} alt="" /> */}
+        {
+          l.cfiType === 5 ? <img className="bg-eGauge" src={require('@/assets/images/temp/bg-img.png')} alt="" /> : null
+        }
+        <div className="title-box">{l.cfiName }</div>
+        {component}
       </div>
     );
+  });
+};
+
+export default ({ curIndex, handleCurIndex, formInfo, setFormInfo, tempData, tags, setSelectId, selectId }) => {
+  // onDragEnter={() => setDo(true)} fix bug: 拖入一个item还没放置的时候触发onLayoutChange导致页面白板
+  const [doing, setDo] = useState(true);
+
+  function onLayoutChange(l) {
+    if (doing) return;
+    const f = _.map(_.clone(formInfo), v => {
+      const item = l.find(lv => lv.i === JSON.parse(v.cfiLayout).i);
+      if (item !== undefined) {
+        v.cfiLayout = JSON.stringify(item);
+      }
+      return v;
+    });
+    setFormInfo(f);
   }
-}
+
+  const onDrop = e => {
+    const { datasourceId, layout, name, type, id } = tempData;
+    const { w, h } = JSON.parse(layout);
+    const { x, y } = e;
+    const i = '' + new Date().getTime();
+    const cfiLayout = JSON.stringify({ x, y, w, h, i });
+    console.log(formInfo);
+    console.log(...formInfo);
+    const newInfo = [{ cfiLayout, cfiDatasourceId: datasourceId, cfiName: name, cfiType: type, cfiConfigId: id }, ...formInfo];
+    setFormInfo(newInfo);
+    setDo(false);
+  };
+
+  return (
+    // onDragEnter={() => setDo(true)} fix bug: 拖入一个item还没放置的时候触发onLayoutChange导致页面白板
+    <div className="grid-box" onDragEnter={() => setDo(true)}>
+      <ReactGridLayout
+        className="cst-layout"
+        cols={12}
+        rowHeight={30}
+        onLayoutChange={onLayoutChange}
+        onDrop={onDrop}
+        // isDroppable={!!curIndex}
+      >
+        { generateDOM(formInfo) }
+      </ReactGridLayout>
+    </div>
+  );
+
+};
